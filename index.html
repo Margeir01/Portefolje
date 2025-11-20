@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <link rel="icon" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/android-chrome-192x192.png">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Portefølje side</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="Logo" href="index.html">🌐Min portefølje</a>
+
+        <button class="nav-toggle" aria-label="Meny" aria-controls="primnav" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav id="primnav" class="nav" hidden>
+            <ul>
+                <li><a class="is-active" href="index.html">Hjem</a></li>
+                <li><a href="prosjekter.html">Prosjekter</a></li>
+                <li><a href="Om-meg.html">Om meg</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <span id="klokke" aria-live="polite"></span>
+        </div>
+    </header>
+
+    <main>
+        <h1>Velkommen til min portefølje!</h1>
+        <p>Her legger jeg ved alle mine prosjekter.</p>
+
+        <!-- ÉN grid med FLERE kort -->
+ <section class="grid">
+    <article class="card">
+        <img src="img/forside.png" alt="Jessheim Discgolf Klubb – nettside">
+        <h3>Jessheim Discgolf Klubb</h3>
+        <p>Min første nettside, laget for et skoleprosjekt.</p>
+        <a class="card-link" href="https://margeir01.github.io/Jessheim-Discgolf/" target="_blank">
+            Besøk prosjektet
+        </a>
+    </article>
+
+    <article class="card">
+        <img src="img/forside.png" alt="Prosjekt 2">
+        <h3>Prosjekt 2</h3>
+        <p>Kort beskrivelse av prosjekt nummer to.</p>
+    </article>
+
+    <article class="card">
+        <img src="img/forside.png" alt="Prosjekt 3">
+        <h3>Prosjekt 3</h3>
+        <p>Enda et prosjekt. Bytter tekst senere.</p>
+    </article>
+
+    <article class="card">
+        <img src="img/forside.png" alt="Prosjekt 4">
+        <h3>Prosjekt 4</h3>
+        <p>Plassholder for mer ting jeg lager.</p>
+    </article>
+
+    <article class="card">
+        <img src="img/forside.png" alt="Prosjekt 5">
+        <h3>Prosjekt 5</h3>
+        <p>Jepp, enda et kort.</p>
+    </article>
+
+    <article class="card">
+        <img src="img/forside.png" alt="Prosjekt 6">
+        <h3>Prosjekt 6</h3>
+        <p>Rakk ikke, men ser pro ut.</p>
+    </article>
+</section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+<footer class="site-footer">
+    <p>© 2025 Margeir Oddgeirsson • Laget med monster energi drink og litt frustrasjon</p>
+</footer>
+
+</body>
+</html>
