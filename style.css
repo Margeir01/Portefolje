@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400..800&display=swap');
+
+:root {
+    --bg: #0f1115;
+    --fg: #e5e7eb;
+    --brand: #22c55e;
+    --card:#111827;
+    --muted: #9ca3af;
+}
+
+/* generelt */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "TASA Explorer", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05rem;          /* litt større tekst */
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 2.5rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    margin-bottom: 0.3rem;
+}
+
+p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 70ch;
+}
+
+/* header + klokke + nav */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #1f2937;
+    background: rgba(15, 17, 21, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.Logo {
+    color: var(--fg);
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* klokke */
+
+#klokke {
+    font-size: 0.9rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* burger-knapp */
+
+.nav-toggle {
+    border: none;
+    background: transparent;
+    padding: 0.4rem;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--fg);
+}
+
+/* meny mobil */
+
+[hidden] {
+    display: none !important;
+}
+
+.nav {
+    position: absolute;
+    top: 56px; /* rett under header */
+    left: 0;
+    right: 0;
+    background: #020617;
+    border-bottom: 1px solid #1f2937;
+    padding: 0.75rem 1rem 1rem;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 0.98rem;
+    padding: 0.4rem 0;
+    display: inline-block;
+}
+
+.nav a.is-active {
+    color: var(--brand);
+    font-weight: 600;
+}
+
+/* grid + kort */
+
+.grid {
+    display: grid;
+    gap: 1.2rem;
+    padding-top: 1rem;
+    grid-template-columns: 1fr; /* mobil */
+}
+
+/* nettbrett */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.45);
+}
+
+.card img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+.card h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin: 0;
+}
+
+/* kontakt-side */
+
+.contact-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    margin-top: 1.5rem;
+}
+
+.contact-card h2 {
+    margin-top: 0;
+}
+
+.contact-card label {
+    display: block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #374151;
+    background: #020617;
+    color: var(--fg);
+    font: inherit;
+}
+
+.contact-card textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-card button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--brand);
+    color: #022c22;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* tablet */
+
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        background: transparent;
+        border-bottom: none;
+        padding: 0;
+    }
+
+    .nav ul {
+        flex-direction: row;
+        gap: 1.25rem;
+    }
+
+    .nav a {
+        font-size: 0.95rem;
+        padding: 0;
+    }
+}
+
+/* desktop */
+
+@media (min-width: 1024px) {
+
+    .Logo {
+        font-size: 1.2rem;
+    }
+
+    body {
+        font-size: 1.1rem;
+    }
+}
+
+.card {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.card-link {
+    margin-top: 0.75rem;
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
+    background: var(--brand);
+    color: #022c22;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.card-link:hover {
+    background: #16a34a;
+}
+
+.site-footer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 3rem;
+    padding: 1.2rem 1rem;
+
+    color: var(--muted);
+    border-top: 1px solid #1f2937;
+    background: rgba(15, 17, 21, 0.35);
+    backdrop-filter: blur(10px);
+
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* --- Lik høyde på alle kort --- */
+
+.grid {
+    align-items: stretch; /* gjør så alle kolonner strekker seg likt */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* sørger for at kortene strekker seg likt */
+    height: 100%;
+    padding-bottom: 1rem;
+}
+
+/* Bildene holder høyden sin, men blir ikke enorme */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    max-height: 250px;      /* <– høyden DU justerer */
+    object-fit: cover;      /* gjør at lange bilder ikke drar alt ut av proporsjon */
+    object-position: center;
+}
+
+.card h3 {
+    margin-bottom: 0.3rem;
+}
+
+.card p {
+    margin-bottom: 0.8rem;
+}
+
