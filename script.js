@@ -46,8 +46,16 @@ if (contactForm) {
 
     const button = contactForm.querySelector('button[type="submit"]');
     const status = contactForm.querySelector('.form-status');
+    const endpoint = contactForm.dataset.endpoint;
     const formData = new FormData(contactForm);
-    const endpoint = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+    if (!endpoint) {
+      if (status) {
+        status.classList.add('is-error');
+        status.textContent = 'Meldingssystemet mangler endepunkt.';
+      }
+      return;
+    }
 
     if (button) {
       button.textContent = 'Sender melding...';

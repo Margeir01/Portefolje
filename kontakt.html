@@ -41,14 +41,13 @@
         <section class="contact-layout">
             <div class="contact-note">
                 <h2>Åpen for spørsmål og samarbeid</h2>
-                <p>Skjemaet sender meldingen direkte til e-posten min. Første gang må e-postadressen bekreftes hos FormSubmit.</p>
+                <p>Skjemaet sender meldingen direkte til e-posten min uten å åpne en ny side.</p>
             </div>
 
-            <form class="contact-form" action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST" data-contact-form>
+            <form class="contact-form" data-contact-form data-endpoint="https://formsubmit.co/ajax/margeir.oddgeirsson@gmail.com">
                 <input type="hidden" name="_subject" value="Ny melding fra porteføljesiden">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://margeir01.github.io/Portefolje/takk.html">
                 <input type="hidden" name="_autoresponse" value="Takk for meldingen. Jeg har mottatt den og svarer når jeg har mulighet.">
                 <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
