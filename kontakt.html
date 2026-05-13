@@ -8,13 +8,14 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Kontakt • Portefølje</title>
+    <meta name="description" content="Kontakt Margeir Oddgeirsson.">
+    <title>Kontakt | Margeir Oddgeirsson</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="site-header">
-        <a class="Logo" href="index.html">🌐Min portefølje</a>
+        <a class="logo" href="index.html">Margeir Oddgeirsson</a>
 
         <button class="nav-toggle" aria-label="Meny" aria-controls="primnav" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -23,39 +24,47 @@
         <nav id="primnav" class="nav" hidden>
             <ul>
                 <li><a href="index.html">Hjem</a></li>
-                <li><a href="#">Prosjekter</a></li>
-                <li><a href="#">Om meg</a></li>
+                <li><a href="prosjekter.html">Prosjekter</a></li>
+                <li><a href="Om-meg.html">Om meg</a></li>
                 <li><a class="is-active" href="kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
 
-        <div style="display: flex; gap: 12px; align-items: center;">
-            <span id="klokke" aria-live="polite"></span>
-        </div>
+        <span id="klokke" aria-live="polite"></span>
     </header>
 
     <main>
-        <h1>Kontakt meg</h1>
-        <p>Har du spørsmål om prosjektene mine, eller vil du bare nerde litt om IT og discgolf? Send meg en melding.</p>
+        <section class="page-intro">
+            <p class="eyebrow">Kontakt</p>
+            <h1>Ta gjerne kontakt</h1>
+            <p class="lead">Har du spørsmål om prosjektene mine, skolearbeid eller IT-relaterte temaer, kan du sende meg en melding her.</p>
+        </section>
 
         <section class="contact-card">
-            <h2>Kontakt</h2>
+            <h2>Send melding</h2>
 
-            <!-- Dette er bare frontend, ingen ekte sending -->
-            <form>
+            <form action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Ny melding fra porteføljesiden">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
                 <label for="navn">Navn</label>
-                <input type="text" id="navn" name="navn" placeholder="Ditt navn">
+                <input type="text" id="navn" name="navn" placeholder="Ditt navn" required>
 
                 <label for="epost">E-post</label>
-                <input type="email" id="epost" name="epost" placeholder="din@epost.no">
+                <input type="email" id="epost" name="epost" placeholder="din@epost.no" required>
 
                 <label for="melding">Melding</label>
-                <textarea id="melding" name="melding" placeholder="Hva vil du si?"></textarea>
+                <textarea id="melding" name="melding" placeholder="Hva vil du si?" required></textarea>
 
-                <button type="submit">Kommer ikke tilbake til deg</button>
+                <button type="submit">Send melding</button>
             </form>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Margeir Oddgeirsson · Portefølje</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

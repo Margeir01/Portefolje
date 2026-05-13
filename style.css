@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg: #0f1115;
-    --fg: #e5e7eb;
-    --brand: #22c55e;
-    --card:#111827;
-    --muted: #9ca3af;
+    --bg: #0b0d12;
+    --surface: #121722;
+    --surface-2: #171e2b;
+    --fg: #f5f7fb;
+    --muted: #a5afc0;
+    --line: #263142;
+    --brand: #46d38d;
+    --brand-strong: #29b574;
+    --accent: #7aa7ff;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
-
-/* generelt */
 
 *,
 *::before,
@@ -16,83 +19,133 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: "TASA Explorer", system-ui, sans-serif;
+html {
     background: var(--bg);
-    color: var(--fg);
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
     margin: 0;
-    line-height: 1.7;
-    font-size: 1.05rem;          /* litt større tekst */
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(70, 211, 141, 0.12), transparent 34rem),
+        linear-gradient(180deg, #0b0d12 0%, #10141d 58%, #0b0d12 100%);
+    color: var(--fg);
+    line-height: 1.65;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+
+body::selection {
+    background: rgba(70, 211, 141, 0.35);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
 }
 
 main {
-    max-width: 960px;
+    width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
-    padding: 1.5rem 1rem 2.5rem;
+    padding: 56px 0 72px;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
 }
 
 h1 {
-    font-size: clamp(2rem, 3vw, 2.6rem);
-    margin-bottom: 0.3rem;
+    max-width: 920px;
+    margin-bottom: 18px;
+    font-size: clamp(2.25rem, 5.6vw, 4.1rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+    line-height: 1.1;
+}
+
+h3 {
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+    line-height: 1.25;
 }
 
 p {
-    font-size: 1.05rem;
     color: var(--muted);
-    max-width: 70ch;
 }
 
-/* header + klokke + nav */
+ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--muted);
+}
+
+li + li {
+    margin-top: 0.45rem;
+}
 
 .site-header {
     position: sticky;
     top: 0;
     z-index: 20;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #1f2937;
-    background: rgba(15, 17, 21, 0.95);
-    backdrop-filter: blur(10px);
+    gap: 18px;
+    min-height: 68px;
+    padding: 0 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(11, 13, 18, 0.86);
+    backdrop-filter: blur(16px);
 }
 
-.Logo {
+.logo {
     color: var(--fg);
+    font-size: 0.98rem;
     font-weight: 800;
     text-decoration: none;
-    font-size: 1.1rem;
-}
-
-/* klokke */
-
-#klokke {
-    font-size: 0.9rem;
-    color: var(--muted);
     white-space: nowrap;
 }
 
-/* burger-knapp */
+#klokke {
+    color: var(--muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
 
 .nav-toggle {
-    border: none;
-    background: transparent;
-    padding: 0.4rem;
+    width: 42px;
+    height: 42px;
     display: inline-flex;
     flex-direction: column;
-    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
     cursor: pointer;
 }
 
 .nav-toggle span {
-    display: block;
-    width: 20px;
+    width: 19px;
     height: 2px;
     border-radius: 999px;
     background: var(--fg);
 }
-
-/* meny mobil */
 
 [hidden] {
     display: none !important;
@@ -100,128 +153,268 @@ p {
 
 .nav {
     position: absolute;
-    top: 56px; /* rett under header */
-    left: 0;
-    right: 0;
-    background: #020617;
-    border-bottom: 1px solid #1f2937;
-    padding: 0.75rem 1rem 1rem;
+    top: 68px;
+    left: 16px;
+    right: 16px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(18, 23, 34, 0.98);
+    box-shadow: var(--shadow);
 }
 
 .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav a {
-    text-decoration: none;
-    color: var(--fg);
-    font-size: 0.98rem;
-    padding: 0.4rem 0;
-    display: inline-block;
-}
-
-.nav a.is-active {
-    color: var(--brand);
+    display: block;
+    padding: 11px 12px;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 0.94rem;
     font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
-/* grid + kort */
+.nav a:hover,
+.nav a.is-active {
+    color: var(--fg);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.hero {
+    min-height: min(520px, calc(100vh - 250px));
+    display: flex;
+    align-items: end;
+    margin: -24px 0 36px;
+    padding: clamp(2rem, 7vw, 5rem);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, rgba(11, 13, 18, 0.94) 0%, rgba(11, 13, 18, 0.76) 52%, rgba(11, 13, 18, 0.18) 100%),
+        url("img/Ale-Discgolf.jpg") center / cover;
+    box-shadow: var(--shadow);
+}
+
+.hero-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 840px;
+}
+
+.eyebrow,
+.tag {
+    color: var(--brand);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.lead {
+    max-width: 720px;
+    color: #d8deea;
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.button,
+.card-link,
+.contact-card button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #06140e;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover,
+.card-link:hover,
+.contact-card button:hover {
+    transform: translateY(-2px);
+    background: var(--brand-strong);
+    box-shadow: 0 10px 24px rgba(70, 211, 141, 0.18);
+}
+
+.button-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--fg);
+}
+
+.button-secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.section-heading,
+.page-intro {
+    max-width: 760px;
+    margin-bottom: 28px;
+}
+
+.page-intro {
+    padding: 28px 0 18px;
+}
 
 .grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding-top: 1rem;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.card,
+.contact-card,
+.info-panel {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: rgba(18, 23, 34, 0.82);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
 }
 
 .card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.45);
+    transform: translateY(-5px);
+    border-color: rgba(70, 211, 141, 0.36);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
 }
 
 .card img {
     width: 100%;
-    max-width: 280px;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 1rem;
+    height: 210px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.card h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1.1rem;
+.card-body {
+    flex: 1;
+    padding: 18px 18px 8px;
+}
+
+.tag {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 0.72rem;
 }
 
 .card p {
-    margin: 0;
+    margin-bottom: 0;
 }
 
-/* kontakt-side */
+.card-link {
+    align-self: flex-start;
+    margin: 16px 18px 18px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.info-panel,
+.contact-card {
+    padding: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.info-panel h2,
+.contact-card h2 {
+    font-size: 1.25rem;
+}
 
 .contact-card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    margin-top: 1.5rem;
+    max-width: 760px;
 }
 
-.contact-card h2 {
-    margin-top: 0;
+.contact-card form {
+    display: grid;
+    gap: 10px;
 }
 
 .contact-card label {
-    display: block;
-    margin-top: 0.75rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.95rem;
+    color: var(--fg);
+    font-size: 0.92rem;
+    font-weight: 700;
 }
 
 .contact-card input,
 .contact-card textarea {
     width: 100%;
-    padding: 0.6rem 0.7rem;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--line);
     border-radius: 8px;
-    border: 1px solid #374151;
-    background: #020617;
+    background: #0c111b;
     color: var(--fg);
     font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+    border-color: rgba(70, 211, 141, 0.72);
+    box-shadow: 0 0 0 4px rgba(70, 211, 141, 0.1);
 }
 
 .contact-card textarea {
-    min-height: 120px;
+    min-height: 150px;
     resize: vertical;
 }
 
 .contact-card button {
-    margin-top: 1rem;
-    padding: 0.6rem 1.1rem;
-    border-radius: 999px;
-    border: none;
-    background: var(--brand);
-    color: #022c22;
-    font-weight: 600;
-    cursor: pointer;
+    justify-self: start;
+    margin-top: 6px;
 }
 
-/* tablet */
+.site-footer {
+    display: flex;
+    justify-content: center;
+    padding: 28px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(11, 13, 18, 0.72);
+}
+
+.site-footer p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    text-align: center;
+}
 
 @media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
+    .site-header {
+        grid-template-columns: auto 1fr auto;
     }
 
     .nav-toggle {
@@ -230,34 +423,90 @@ p {
 
     .nav {
         position: static;
-        background: transparent;
-        border-bottom: none;
+        justify-self: center;
         padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
     }
 
     .nav ul {
         flex-direction: row;
-        gap: 1.25rem;
+        gap: 6px;
     }
 
     .nav a {
-        font-size: 0.95rem;
-        padding: 0;
+        padding: 8px 11px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* desktop */
-
-@media (min-width: 1024px) {
+@media (min-width: 1040px) {
     .grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .site-header {
+        grid-template-columns: 1fr auto;
+        padding: 0 16px;
     }
 
-    .Logo {
-        font-size: 1.2rem;
+    #klokke {
+        display: none;
     }
 
-    body {
-        font-size: 1.1rem;
+    main {
+        width: min(calc(100% - 24px), 1120px);
+        padding-top: 36px;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 2rem;
+        margin-top: -12px;
+        background:
+            linear-gradient(180deg, rgba(11, 13, 18, 0.94) 0%, rgba(11, 13, 18, 0.76) 58%, rgba(11, 13, 18, 0.38) 100%),
+            url("img/Ale-Discgolf.jpg") center / cover;
+    }
+
+    h1 {
+        max-width: 100%;
+        font-size: clamp(2rem, 8.6vw, 2.55rem);
+        line-height: 1.06;
+        overflow-wrap: anywhere;
+    }
+
+    .lead {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .hero-content {
+        max-width: calc(100vw - 88px);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button,
+    .card-link,
+    .contact-card button {
+        width: 100%;
+    }
+
+    .card-link,
+    .contact-card button {
+        align-self: stretch;
     }
 }

@@ -2,18 +2,22 @@ const btn = document.querySelector('.nav-toggle');
 const nav = document.getElementById('primnav');
 const mq = matchMedia('(min-width: 768px)');
 
-// toggle meny på mobil
+function setMenu(open) {
+  if (!btn || !nav) return;
+
+  btn.setAttribute('aria-expanded', String(open));
+  nav.hidden = !open;
+}
+
 function toggleMenu() {
   const open = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!open));
-  nav.hidden = open; // hvis åpen -> skjul, hvis lukket -> vis
+  setMenu(!open);
 }
 
 if (btn && nav) {
   btn.addEventListener('click', toggleMenu);
 }
 
-// klokke
 function tick() {
   const el = document.getElementById('klokke');
   if (!el) return;
@@ -29,37 +33,31 @@ function tick() {
 
   const tid = now.toLocaleTimeString('no-NO', {
     hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
+    minute: '2-digit'
   });
 
-  el.textContent = `${dato} • ${tid}`;
+  el.textContent = `${dato} · ${tid}`;
 }
 
 tick();
 setInterval(tick, 1000);
 
-// Lukk med Escape på mobil
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !mq.matches && btn && nav) {
-    btn.setAttribute('aria-expanded', 'false');
-    nav.hidden = true;
+  if (e.key === 'Escape' && !mq.matches) {
+    setMenu(false);
   }
 });
 
-// håndter mobil/desktop-visning
 function handleScreenChange(e) {
-  if (!nav || !btn) return;
+  if (!btn || !nav) return;
 
   if (e.matches) {
-    // >= 768px: alltid vis meny, ingen burgerlogikk
     nav.hidden = false;
     btn.setAttribute('aria-expanded', 'false');
-  } else {
-    // < 768px: start med meny lukket
-    nav.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
+    return;
   }
+
+  setMenu(false);
 }
 
 handleScreenChange(mq);
