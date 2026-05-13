@@ -29,21 +29,22 @@
                 <li><a class="is-active" href="kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
-
-        <span id="klokke" aria-live="polite"></span>
     </header>
 
     <main>
         <section class="page-intro">
             <p class="eyebrow">Kontakt</p>
-            <h1>Ta gjerne kontakt</h1>
+            <h1>Ta kontakt</h1>
             <p class="lead">Har du spørsmål om prosjektene mine, skolearbeid eller IT-relaterte temaer, kan du sende meg en melding her.</p>
         </section>
 
-        <section class="contact-card">
-            <h2>Send melding</h2>
+        <section class="contact-layout">
+            <div class="contact-note">
+                <h2>Åpen for spørsmål og samarbeid</h2>
+                <p>Bruk skjemaet, så sendes meldingen videre til e-posten min.</p>
+            </div>
 
-            <form action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST">
+            <form class="contact-form" action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Ny melding fra porteføljesiden">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
@@ -57,7 +58,7 @@
                 <label for="melding">Melding</label>
                 <textarea id="melding" name="melding" placeholder="Hva vil du si?" required></textarea>
 
-                <button type="submit">Send melding</button>
+                <button class="button" type="submit">Send melding</button>
             </form>
         </section>
     </main>
