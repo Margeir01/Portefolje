@@ -1,6 +1,7 @@
 const btn = document.querySelector('.nav-toggle');
 const nav = document.getElementById('primnav');
 const mq = matchMedia('(min-width: 768px)');
+const contactForm = document.querySelector('[data-contact-form]');
 
 function setMenu(open) {
   if (!btn || !nav) return;
@@ -17,30 +18,6 @@ function toggleMenu() {
 if (btn && nav) {
   btn.addEventListener('click', toggleMenu);
 }
-
-function tick() {
-  const el = document.getElementById('klokke');
-  if (!el) return;
-
-  const now = new Date();
-
-  const dato = now.toLocaleDateString('no-NO', {
-    weekday: 'long',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  });
-
-  const tid = now.toLocaleTimeString('no-NO', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
-  el.textContent = `${dato} · ${tid}`;
-}
-
-tick();
-setInterval(tick, 1000);
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !mq.matches) {
@@ -62,3 +39,19 @@ function handleScreenChange(e) {
 
 handleScreenChange(mq);
 mq.addEventListener('change', handleScreenChange);
+
+if (contactForm) {
+  contactForm.addEventListener('submit', () => {
+    const button = contactForm.querySelector('button[type="submit"]');
+    const status = contactForm.querySelector('.form-status');
+
+    if (button) {
+      button.textContent = 'Sender melding...';
+      button.disabled = true;
+    }
+
+    if (status) {
+      status.textContent = 'Sender meldingen videre til e-post.';
+    }
+  });
+}

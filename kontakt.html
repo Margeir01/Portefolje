@@ -41,24 +41,28 @@
         <section class="contact-layout">
             <div class="contact-note">
                 <h2>Åpen for spørsmål og samarbeid</h2>
-                <p>Bruk skjemaet, så sendes meldingen videre til e-posten min.</p>
+                <p>Skjemaet sender meldingen direkte til e-posten min. Første gang må e-postadressen bekreftes hos FormSubmit.</p>
             </div>
 
-            <form class="contact-form" action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST">
+            <form class="contact-form" action="https://formsubmit.co/margeir.oddgeirsson@gmail.com" method="POST" data-contact-form>
                 <input type="hidden" name="_subject" value="Ny melding fra porteføljesiden">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://margeir01.github.io/Portefolje/takk.html">
+                <input type="hidden" name="_autoresponse" value="Takk for meldingen. Jeg har mottatt den og svarer når jeg har mulighet.">
+                <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                 <label for="navn">Navn</label>
-                <input type="text" id="navn" name="navn" placeholder="Ditt navn" required>
+                <input type="text" id="navn" name="navn" placeholder="Ditt navn" autocomplete="name" required>
 
                 <label for="epost">E-post</label>
-                <input type="email" id="epost" name="epost" placeholder="din@epost.no" required>
+                <input type="email" id="epost" name="email" placeholder="din@epost.no" autocomplete="email" required>
 
                 <label for="melding">Melding</label>
-                <textarea id="melding" name="melding" placeholder="Hva vil du si?" required></textarea>
+                <textarea id="melding" name="melding" placeholder="Hva vil du si?" minlength="10" required></textarea>
 
                 <button class="button" type="submit">Send melding</button>
+                <p class="form-status" aria-live="polite"></p>
             </form>
         </section>
     </main>
