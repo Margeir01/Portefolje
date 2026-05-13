@@ -483,6 +483,14 @@ p {
     font-weight: 700;
 }
 
+.form-status.is-success {
+    color: var(--accent-dark);
+}
+
+.form-status.is-error {
+    color: #9b2c2c;
+}
+
 .contact-form .button {
     justify-self: start;
     margin-top: 8px;
