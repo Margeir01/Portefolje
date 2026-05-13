@@ -170,16 +170,6 @@ p {
     background: rgba(31, 111, 91, 0.1);
 }
 
-.nav a.nav-cv {
-    color: #fffdfa;
-    background: var(--accent);
-}
-
-.nav a.nav-cv:hover {
-    color: #fffdfa;
-    background: var(--accent-dark);
-}
-
 .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
